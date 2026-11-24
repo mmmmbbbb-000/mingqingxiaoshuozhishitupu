@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>明清小说知识图谱</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar__text">
+        <p class="eyebrow">知识图谱原型</p>
+        <h1>明清小说知识图谱</h1>
+        <p class="subtitle">从人物、作品、主题到艺术手法，建立跨作品的阅读关系网络</p>
+      </div>
+      <div class="topbar__stats">
+        <div class="stat-card">
+          <span class="stat-label">节点数</span>
+          <strong id="stat-nodes">0</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">关系数</span>
+          <strong id="stat-links">0</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">类型数</span>
+          <strong id="stat-types">0</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar">
+        <section class="panel controls-panel">
+          <div class="panel__header">
+            <h2>探索控制</h2>
+            <button id="reset-view" class="ghost-btn">重置视图</button>
+          </div>
+
+          <div class="search-group">
+            <label for="search">搜索内容</label>
+            <input id="search" placeholder="输入作品、人物或主题..." />
+          </div>
+
+          <div class="control-row">
+            <label for="node-size">节点大小</label>
+            <input id="node-size" type="range" min="6" max="28" value="10" />
+          </div>
+
+          <div class="control-row">
+            <label for="cluster-spacing">群集间距</label>
+            <input id="cluster-spacing" type="range" min="40" max="220" value="80" />
+          </div>
+
+          <div class="filter-group">
+            <div class="panel__subheader">按类型筛选</div>
+            <div id="filters"></div>
+          </div>
+        </section>
+
+        <section class="panel detail-panel">
+          <div class="panel__header">
+            <h2>节点详情</h2>
+            <span id="detail-badge" class="detail-badge">待选择</span>
+          </div>
+          <div id="detail-title" class="detail-title">点击图中的节点查看详情</div>
+          <div id="detail-type" class="detail-type"></div>
+          <div id="detail-desc" class="detail-desc"></div>
+        </section>
+      </aside>
+
+      <section class="graph-panel">
+        <div class="graph-toolbar">
+          <div class="graph-toolbar__left">
+            <span class="toolbar-pill">交互式知识图谱</span>
+            <span class="toolbar-pill">支持缩放 / 拖拽 / 搜索</span>
+          </div>
+          <div class="graph-toolbar__right">
+            <button id="fit-view" class="primary-btn">适配画布</button>
+          </div>
+        </div>
+        <div id="graph"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js?v=4"></script>
+</body>
+</html>
